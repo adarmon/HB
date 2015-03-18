@@ -1,5 +1,5 @@
 ﻿		</div>
-		<div id="basdepage">&copy; Axel Darmon</div>
-	</body>
+<div id="basdepage">&copy; Axel Darmon</div>
+</body>
 
 </html>
