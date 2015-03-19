@@ -12,22 +12,20 @@
  * @author Ariel
  */
 class Article {
-    
+
     // attributes
     public $id;
     public $title;
     public $content;
-    
-    private $bd;
+    private $db;
 
     // methods
-    
+
     public function __construct() {
-//        include ('includes/connexion.php');
-//        
-//        $this->db= $db;
+        // require_once ('includes/connexion.php');
+        // $this->db = getConnexion();
     }
-    
+
     /** display one article
      * 
      * @param type $id
@@ -35,19 +33,22 @@ class Article {
     public function displayArticle($id) {
         
     }
-    
+
     /** display all articles
      * 
      */
     public function displayAll() {
 
-        require ('includes/connexion.php');
-        
+        require_once ('includes/connexion.php');
+        $db = getConnexion();
+
         $sql = "SELECT * FROM `article` WHERE 1";
 
         try {
 
             $sth = $db->query($sql);
+            $sth->setFetchMode(PDO::FETCH_CLASS, "Article");
+            
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();

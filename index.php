@@ -10,9 +10,6 @@ $logo = "<img src=\"img/tux.png\" alt=\"tux surfeur\" class=\"homeimg\" width=\"
 // functions
 include('includes/functions.php');
 
-// db connexion
-require('includes/connexion.php');
-
 $getpage = (isset($_GET['page']) && $_GET['page'] != '') ? $_GET['page'] : 'home';
 
 switch ($getpage) {

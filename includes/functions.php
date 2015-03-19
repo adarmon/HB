@@ -3,6 +3,9 @@
 define('ROOTDIR', $_SERVER['DOCUMENT_ROOT']);
 define('CLASSES_DIR', ROOTDIR.'/models');
 
+// db connexion
+require_once('includes/connexion.php');
+
 /** autoload
  * 
  * @param type $classname
