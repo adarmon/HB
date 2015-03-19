@@ -13,7 +13,7 @@
  */
 class ArticleRepository {
     
-    
+    // attributes
     private $db;
 
     // assessors
@@ -26,10 +26,7 @@ class ArticleRepository {
     }
 
     // methods
-    public function __construct() {
-        require_once ('includes/connexion.php');
-        if (!isset($db))
-            $db = getConnexion();
+    public function __construct($db) {
         $this->setDb($db);
     }
 
@@ -45,10 +42,9 @@ class ArticleRepository {
         try {
             $sth = $db->prepare($sql);
             $sth->bindParam(':article', $id, PDO::PARAM_INT);
+            $sth->setFetchMode(PDO::FETCH_CLASS, "Article");
             $sth->execute();
-
-
-            // $sth = $db->query($sql);
+            
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
@@ -67,7 +63,6 @@ class ArticleRepository {
         $db = $this->getDb();
 
         try {
-
             $sth = $db->query($sql);
             $sth->setFetchMode(PDO::FETCH_CLASS, "Article");
         } catch (PDOException $e) {
@@ -144,6 +139,7 @@ class ArticleRepository {
             $sth = $db->prepare($sql);
             $sth->bindParam(':title', $title, PDO::PARAM_STR);
             $sth->bindParam(':content', $content, PDO::PARAM_STR);
+            $sth->setFetchMode(PDO::FETCH_CLASS, "Article");
             if ($sth->execute()) {
                 addMessage($i++, 'valid', $msg);
             } else {

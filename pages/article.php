@@ -7,7 +7,7 @@ $id = (int) (isset($_GET['id']) && $_GET['id'] != '') ? $_GET['id'] : 0;
 $title = (isset($_POST['title']) && $_POST['title'] != '') ? $_POST['title'] : "";
 $content = (isset($_POST['content']) && $_POST['content'] != '') ? $_POST['content'] : "";
 
-$article = new Article();
+$article = new ArticleRepository($db);
 
 // verify for update
 if (isset($level) && $level > 0) {

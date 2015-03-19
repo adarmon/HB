@@ -1,6 +1,6 @@
 ﻿<?php
 
-$article = new Article();
+$article = new ArticleRepository($db);
 $result = $article->displayAll();
 
 //ff($result);
