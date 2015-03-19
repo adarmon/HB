@@ -1,19 +1,5 @@
 ﻿<?php
-/*
-$sql = "SELECT * FROM `article` WHERE 1";
 
-try {
-
-    $sth = $db->query($sql);
-} catch (PDOException $e) {
-    print "Erreur !: " . $e->getMessage() . "<br/>";
-    die();
-}
-//ff($sth);
-
-
-$result = $sth->fetchAll();
-*/
 $article = new Article();
 $result = $article->displayAll();
 
@@ -40,7 +26,7 @@ echo "<div class='submit'><a href='index.php?page=article'>Ajouter un article</a
 <script language="javascript">
     function delRow(g) {
         var r = confirm("Are you sure?");
-        if (r == true) {
+        if (r === true) {
             window.location.href = 'index.php?page=deleteArticle&id=' + g;
             return true;
         } else {

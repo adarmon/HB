@@ -1,22 +1,11 @@
 ﻿<?php
-$article = (int) (isset($_GET['id']) && $_GET['id'] != '') ? $_GET['id'] : 0;
+$id = (int) (isset($_GET['id']) && $_GET['id'] != '') ? $_GET['id'] : 0;
 
-//$sql = "SELECT * FROM `article` WHERE `id_article`=:article;";
-$sql = "SELECT * FROM `article` WHERE `id_article`=$article;";
-
-try {
-    //		$sth = $db->prepare($sql);
-    //		$sth->bindParam(':article', $article, PDO::PARAM_INT);
-    //		$sth->execute();
+$article = new Article();
+$result = $article->displayArticle($id);
 
 
-    $sth = $db->query($sql);
-} catch (PDOException $e) {
-    print "Erreur !: " . $e->getMessage() . "<br/>";
-    die();
-}
-
-if ($result = $sth->fetch()) {
+if ($result) {
     ?>
 
     <article dir="auto" id="<?php echo $result->id_article; ?>">
@@ -26,7 +15,7 @@ if ($result = $sth->fetch()) {
         ?>
     </article>
     <p><a href=index.php?page=listArticle>back to the list</a></p>
-        <?php
-    } else {
-        echo '<p>There is no result.</p>';
-    }
+    <?php
+} else {
+    echo '<p>There is no result.</p>';
+}
