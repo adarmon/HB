@@ -1,4 +1,5 @@
 ﻿<?php
+/*
 $sql = "SELECT * FROM `article` WHERE 1";
 
 try {
@@ -12,6 +13,10 @@ try {
 
 
 $result = $sth->fetchAll();
+*/
+$article = new Article();
+$result = $article->displayAll();
+
 //ff($result);
 echo "<table class='results'>\n"
  . "<thead>\n"
